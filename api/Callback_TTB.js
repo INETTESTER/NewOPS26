@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { SharedArray } from 'k6/data';
 
-const data = new SharedArray('id2', function () { ///POST กรณี id ไม่ซ้ำ (ดึง id จากไฟล์ json)
+const data = new SharedArray('id3', function () { ///POST กรณี id ไม่ซ้ำ (ดึง id จากไฟล์ json)
   return JSON.parse(open('../file/data.json')).id; ///POST กรณี id ไม่ซ้ำ (ดึง id จากไฟล์ json)
 });
 
@@ -13,7 +13,7 @@ export function Callback_TTB(scenario) {
     InstructionId: "20250610134300097126904315100733020",
     BillerNo: "010753700001716",
     Ref1: "" + ref1,
-    Ref2: "M25052700001",
+    Ref2: "M24070300001",
     QRId: "ZXXXE231231235900001",
     PayerAccount: "0123456789",
     PayerName: "นส.สุธาสิณี ผาซิว",
