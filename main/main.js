@@ -6,7 +6,7 @@ import { DownloadFile, GetProfile, PostProfile, PostProfile_2, PostProfile_3, Up
 import { Authen } from '../api/Authen.js';
 import { Authen_CreateTxn_CreateQR_Bay } from '../api/Authen_CreateTxn_CreateQR_Bay.js';
 import { Authen_CreateTxn } from '../api/Authen_CreateTxn.js';
-//import { Callback_Bay } from '../api/Callback_Bay.js';
+import { Callback_Bay } from '../api/Callback_Bay.js';
 //import { Authen_CreateTxn_CreateQR_Callback_Bay } from '../api/Authen_CreateTxn_CreateQR_Callback_Bay.js';
 import { Authen_CreateTxn_CreateQR_TTB } from '../api/Authen_CreateTxn_CreateQR_TTB.js';
 import { Callback_TTB } from '../api/Callback_TTB.js';
@@ -27,8 +27,8 @@ export default function () {    //เรียกใช้ API ใน export def
   //================= BAY ======================
   //response = Authen(cid)
   //response = Authen_CreateTxn(cid)
-  response = Authen_CreateTxn_CreateQR_Bay(cid)
-  //response = Callback_Bay(scenario)
+  //response = Authen_CreateTxn_CreateQR_Bay(cid)
+  response = Callback_Bay(scenario)
   //response = Authen_CreateTxn_CreateQR_Callback_Bay(cid)
 
   //================= TTB =======================
