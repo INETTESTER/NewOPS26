@@ -99,7 +99,7 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     const response_qr = http.post(url_qr, payload_qr, params_qr);
     //console.log(response_qr.body);
     if (!response_qr || response_qr.error_code || (response_qr.status !== 200 && response_qr.status !== 201)) {
-        console.log("QR Fail");
+        console.log("QR Fail : " + response_qr.body);
         return response_qr
     }
     return response_qr

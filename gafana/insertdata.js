@@ -166,19 +166,34 @@ export default function () {
   const p90 = (pnineone / 1000).toFixed(2);
   const p95 = (pninefive / 1000).toFixed(2);
 
-  const e200 = data.root_group.checks['200 OK']?.passes || 0;
-  const e201 = data.root_group.checks['201 Created']?.passes || 0;
-  const e204 = data.root_group.checks['204 No Content']?.passes || 0;
-  const e400 = data.root_group.checks['400 Bad Request']?.passes || 0;
-  const e401 = data.root_group.checks['401 Unauthorized']?.passes || 0;
-  const e403 = data.root_group.checks['403 Forbidden']?.passes || 0;
-  const e404 = data.root_group.checks['404 Not Found']?.passes || 0;
-  const e422 = data.root_group.checks['422 Unprocessable Content']?.passes || 0; // ✅ เพิ่ม
-  const e429 = data.root_group.checks['429 Too Many Requests']?.passes || 0;
-  const e500 = data.root_group.checks['500 Internal Server Error']?.passes || 0;
-  const e502 = data.root_group.checks['502 Bad Gateway']?.passes || 0;
-  const e503 = data.root_group.checks['503 Service Unavailable']?.passes || 0;
-  const e504 = data.root_group.checks['504 Gateway Timeout']?.passes || 0;
+  // const e200 = data.root_group.checks['200 OK']?.passes || 0;
+  // const e201 = data.root_group.checks['201 Created']?.passes || 0;
+  // const e204 = data.root_group.checks['204 No Content']?.passes || 0;
+  // const e400 = data.root_group.checks['400 Bad Request']?.passes || 0;
+  // const e401 = data.root_group.checks['401 Unauthorized']?.passes || 0;
+  // const e403 = data.root_group.checks['403 Forbidden']?.passes || 0;
+  // const e404 = data.root_group.checks['404 Not Found']?.passes || 0;
+  // const e422 = data.root_group.checks['422 Unprocessable Content']?.passes || 0; // ✅ เพิ่ม
+  // const e429 = data.root_group.checks['429 Too Many Requests']?.passes || 0;
+  // const e500 = data.root_group.checks['500 Internal Server Error']?.passes || 0;
+  // const e502 = data.root_group.checks['502 Bad Gateway']?.passes || 0;
+  // const e503 = data.root_group.checks['503 Service Unavailable']?.passes || 0;
+  // const e504 = data.root_group.checks['504 Gateway Timeout']?.passes || 0;
+  const check = data.root_group && data.root_group.checks ? data.root_group.checks : {};
+
+  const e200 = check['200 OK'] ? check['200 OK'].passes : 0;
+  const e201 = check['201 Created'] ? check['201 Created'].passes : 0;
+  const e204 = check['204 No Content'] ? check['204 No Content'].passes : 0;
+  const e400 = check['400 Bad Request'] ? check['400 Bad Request'].passes : 0;
+  const e401 = check['401 Unauthorized'] ? check['401 Unauthorized'].passes : 0;
+  const e403 = check['403 Forbidden'] ? check['403 Forbidden'].passes : 0;
+  const e404 = check['404 Not Found'] ? check['404 Not Found'].passes : 0;
+  const e422 = check['422 Unprocessable Content'] ? check['422 Unprocessable Content'].passes : 0;
+  const e429 = check['429 Too Many Requests'] ? check['429 Too Many Requests'].passes : 0;
+  const e500 = check['500 Internal Server Error'] ? check['500 Internal Server Error'].passes : 0;
+  const e502 = check['502 Bad Gateway'] ? check['502 Bad Gateway'].passes : 0;
+  const e503 = check['503 Service Unavailable'] ? check['503 Service Unavailable'].passes : 0;
+  const e504 = check['504 Gateway Timeout'] ? check['504 Gateway Timeout'].passes : 0;
 
   const unknown = request - (e200 + e201 + e204 + e400 + e401 + e403 + e404 + e422 + e429 + e500 + e502 + e503 + e504);
   const error = http_reqs_passes;
