@@ -1,0 +1,30 @@
+import http from 'k6/http';
+
+export function Callback_TTB() {
+  const url = 'https://loadtest-new-ops.inet.co.th/ttb/api/v1/payment/qr/callback';
+
+  const payload = JSON.stringify({
+    InstructionId: "20250610134300097126904315100733020",
+    BillerNo: "010753700001716",
+    Ref1: "P05276442313324",
+    Ref2: "M25052700001",
+    QRId: "ZXXXE231231235900001",
+    PayerAccount: "0123456789",
+    PayerName: "นส.สุธาสิณี ผาซิว",
+    PayerBank: "004",
+    Amount: "1",
+    ResultCode: "000",
+    ResultDesc: "Successful",
+    TransDate: "20250610134300"
+  });
+
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const response = http.post(url, payload, params);
+  //console.log('Response body:', response.body);
+  return response;
+}

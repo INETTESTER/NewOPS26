@@ -1,0 +1,156 @@
+import http from 'k6/http';
+import { check } from 'k6';
+export function Authen_CreateTxn_CreateQR_Callback_CIMB(cid) {
+    //Step 1 : Authen
+    const url = 'https://loadtest-new-ops.inet.co.th/oauth/api/v1/oauth-token';
+    const orderId = `${__VU}${__ITER}` + cid;
+    const payload = JSON.stringify({
+        key: "E1lnzkQtPdkkGoUyalHSxSdSWpaGaLFZx/N2ZQWtlcwzg0qtE1OOehpzYLzN3Jc/Hayd0WAkhpr++amQBmlti2atE3eJsjbdzoEUtWQ10BnA2j06/56mIu73SEucyWrepmrF4udIytwskzbSTZD99Mf9Na5Eb5Wx2GGmh+nbCy8=",
+        orderId: "LOADTEST-KSP" + orderId
+        //orderId: "LOADTEST-KSP"
+    });
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    const response_authen = http.post(url, payload, params);
+    if (!response_authen || response_authen.error_code || (response_authen.status !== 200 && response_authen.status !== 201)) {
+        console.log("Authen Fail!!");
+        return response_authen
+    }
+    const responseBody_oauth = JSON.parse(response_authen.body);
+    const token_authen = responseBody_oauth.data.token;
+    check(response_authen, {
+        '200 OK': (r) => r.status === 200,
+        '201 Created': (r) => r.status === 201,
+        '204 No Content': (r) => r.status === 204,
+        '400 Bad Request': (r) => r.status === 400,
+        '401 Unauthorized': (r) => r.status === 401,
+        '403 Forbidden': (r) => r.status === 403,
+        '404 Not Found': (r) => r.status === 404,
+        '429 Too Many Requests': (r) => r.status === 429,
+        '500 Internal Server Error': (r) => r.status === 500,
+        '502 Bad Gateway': (r) => r.status === 502,
+        '503 Service Unavailable': (r) => r.status === 503,
+        '504 Gateway Timeout': (r) => r.status === 504,
+    });
+    //console.log('Response body:', token_authen);
+    //return response_authen;
+    //====================================================================================================
+    //Step 2 : Create Transactions
+    const url2 = 'https://loadtest-new-ops.inet.co.th/api/v1/payment-transactions/access-token';
+
+    const payload2 = JSON.stringify({
+        key: "E1lnzkQtPdkkGoUyalHSxSdSWpaGaLFZx/N2ZQWtlcwzg0qtE1OOehpzYLzN3Jc/Hayd0WAkhpr++amQBmlti2atE3eJsjbdzoEUtWQ10BnA2j06/56mIu73SEucyWrepmrF4udIytwskzbSTZD99Mf9Na5Eb5Wx2GGmh+nbCy8=",
+        //orderId: "LOADTEST-KSP",
+        orderId: "LOADTEST-KSP" + orderId,
+        orderDesc: "LOADTEST-KSP",
+        amount: 1,
+        payType: "QR",
+        regRef: ""
+    });
+
+    const params2 = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token_authen,
+        },
+    };
+
+    const response = http.post(url2, payload2, params2);
+    //console.log('Response body:', response.body);
+    if (!response || response.error_code || (response.status !== 200 && response.status !== 201)) {
+        console.log("CreateTxn Fail ");
+        return response
+    }
+    const responseBody_transaction = JSON.parse(response.body);
+    const token_transaction = responseBody_transaction.data.accessToken;
+    check(response, {
+        '200 OK': (r) => r.status === 200,
+        '201 Created': (r) => r.status === 201,
+        '204 No Content': (r) => r.status === 204,
+        '400 Bad Request': (r) => r.status === 400,
+        '401 Unauthorized': (r) => r.status === 401,
+        '403 Forbidden': (r) => r.status === 403,
+        '404 Not Found': (r) => r.status === 404,
+        '429 Too Many Requests': (r) => r.status === 429,
+        '500 Internal Server Error': (r) => r.status === 500,
+        '502 Bad Gateway': (r) => r.status === 502,
+        '503 Service Unavailable': (r) => r.status === 503,
+        '504 Gateway Timeout': (r) => r.status === 504,
+    });
+    //return response;
+    //=================================================================================================
+    //Step 3 : QR Code
+    //console.log(token_transaction);
+    const url_qr = 'https://loadtest-new-ops.inet.co.th/cimb/api/v1/qr-code/cimb';
+    const payload_qr = JSON.stringify({
+        accessToken: '' + token_transaction
+    });
+
+    const params_qr = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    const response_qr = http.post(url_qr, payload_qr, params_qr);
+    //console.log(response_qr.body);
+    if (!response_qr || response_qr.error_code || (response_qr.status !== 200 && response_qr.status !== 201)) {
+        console.log("QR Fail");
+        return response_qr
+    }
+    check(response_qr, {
+        '200 OK': (r) => r.status === 200,
+        '201 Created': (r) => r.status === 201,
+        '204 No Content': (r) => r.status === 204,
+        '400 Bad Request': (r) => r.status === 400,
+        '401 Unauthorized': (r) => r.status === 401,
+        '403 Forbidden': (r) => r.status === 403,
+        '404 Not Found': (r) => r.status === 404,
+        '429 Too Many Requests': (r) => r.status === 429,
+        '500 Internal Server Error': (r) => r.status === 500,
+        '502 Bad Gateway': (r) => r.status === 502,
+        '503 Service Unavailable': (r) => r.status === 503,
+        '504 Gateway Timeout': (r) => r.status === 504,
+    });
+    //return response_qr
+    //==================================================================================================
+    //Step 4: Callback
+    const url_4 = 'https://loadtest-new-ops.inet.co.th/cimb/api/payment/cimb/notification/v1';
+
+    const payload_4 = JSON.stringify({
+        data: {
+            amount_paid: 1,
+            biller_display_name: "",
+            biller_id: "010754400009421",
+            reference1: "P04113133533659",
+            reference2: "M24091900001",
+            reference3: "",
+            result: "S",
+            sender_account_name: "Suthasinee Phasiw",
+            sender_account_number: "1234567890",
+            sender_bank_code: "004",
+            transaction_datetime: "2025-08-22T10:10:00.000+07:00",
+            transaction_id: "20250822101000"
+        },
+        header: {
+            request_reference_no: "SIBS55328df0-eb90-4511-82f9-b03799bc6662",
+            requester_system: "SIBS",
+            transaction_datetime: "2025-08-22T10:10:00.000+07:00"
+        }
+    });
+
+    const params_4 = {
+        headers: {
+            'Content-Type': 'application/json',
+            'True-Client-Ip': '203.23.188.236',
+            'Authorization': 'Basic Y2ltYnByb21wdHBheTpDMU04Zzt2aU49eWpvUDJE'
+        },
+    };
+
+    const response_4 = http.post(url_4, payload_4, params_4);
+    console.log('Response body:', response_4.body);
+    return response_4;
+}
