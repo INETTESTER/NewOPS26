@@ -7,14 +7,13 @@ import { scenario } from 'k6/execution';
 //   return JSON.parse(raw).payment_transaction_no;
 // });
 
-const data = new SharedArray('trxId', function () {
-  return JSON.parse(open('../file/txid.json')).payment_transaction_no;
+const data = new SharedArray('id2', function () { ///POST กรณี id ไม่ซ้ำ (ดึง id จากไฟล์ json)
+  return JSON.parse(open('../file/data.json')).id; ///POST กรณี id ไม่ซ้ำ (ดึง id จากไฟล์ json)
 });
 
 
-export function Callback_Bay() {
-  //const trxId = data[__VU % data.length].bank_ref;
-  const trxId = data[scenario.iterationInTest % data.length].bank_ref;
+export function Callback_Bay(scenario) {
+  const trxId = data[scenario.iterationInTest];
 
   //console.log(trxId);
   const url = 'https://loadtest-new-ops.inet.co.th/bay/api/v1/payment/qr/callback';
@@ -37,7 +36,7 @@ export function Callback_Bay() {
     },
   };
 
-  //const response = http.post(url, payload, params);
+  const response = http.post(url, payload, params);
   //console.log('Response body:', response.body);
   return response;
 }

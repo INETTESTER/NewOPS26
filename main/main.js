@@ -27,8 +27,8 @@ export default function () {    //เรียกใช้ API ใน export def
   //================= BAY ======================
   //response = Authen(cid)
   //response = Authen_CreateTxn(cid)
-  //response = Authen_CreateTxn_CreateQR_Bay(cid)
-  //response = Callback_Bay()
+  response = Authen_CreateTxn_CreateQR_Bay(cid)
+  //response = Callback_Bay(scenario)
   //response = Authen_CreateTxn_CreateQR_Callback_Bay(cid)
 
   //================= TTB =======================
@@ -37,7 +37,7 @@ export default function () {    //เรียกใช้ API ใน export def
   //response = Authen_CreateTxn_CreateQR_Callback_TTB(cid)
 
   //================= CIMB ======================
-  response = Authen_CreateTxn_CreateQR_CIMB(cid)
+  //response = Authen_CreateTxn_CreateQR_CIMB(cid)
   //response = Authen_CreateTxn_CreateQR_Callback_CIMB(cid)
   //response = Verify()
 
