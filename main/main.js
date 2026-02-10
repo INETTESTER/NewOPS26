@@ -9,7 +9,7 @@ import { Authen_CreateTxn } from '../api/Authen_CreateTxn.js';
 //import { Callback_Bay } from '../api/Callback_Bay.js';
 //import { Authen_CreateTxn_CreateQR_Callback_Bay } from '../api/Authen_CreateTxn_CreateQR_Callback_Bay.js';
 import { Authen_CreateTxn_CreateQR_TTB } from '../api/Authen_CreateTxn_CreateQR_TTB.js';
-import { Callback_TTB } from '../api/Callback_TTB.js';
+//import { Callback_TTB } from '../api/Callback_TTB.js';
 import { Authen_CreateTxn_CreateQR_Callback_TTB } from '../api/Authen_CreateTxn_CreateQR_Callback_TTB.js';
 import { InquiryTxn } from '../api/InquiryTxn.js';
 import { InquiryDate } from '../api/InquiryDate.js';
@@ -32,8 +32,8 @@ export default function () {    //เรียกใช้ API ใน export def
   //response = Authen_CreateTxn_CreateQR_Callback_Bay(cid)
 
   //================= TTB =======================
-  //response = Authen_CreateTxn_CreateQR_TTB(cid)
-  response = Callback_TTB(scenario)
+  response = Authen_CreateTxn_CreateQR_TTB(cid)
+  //response = Callback_TTB(scenario)
   //response = Authen_CreateTxn_CreateQR_Callback_TTB(cid)
 
   //================= CIMB ======================
