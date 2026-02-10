@@ -9,7 +9,7 @@ import { Authen_CreateTxn } from '../api/Authen_CreateTxn.js';
 //import { Callback_Bay } from '../api/Callback_Bay.js';
 //import { Authen_CreateTxn_CreateQR_Callback_Bay } from '../api/Authen_CreateTxn_CreateQR_Callback_Bay.js';
 import { Authen_CreateTxn_CreateQR_TTB } from '../api/Authen_CreateTxn_CreateQR_TTB.js';
-import { Callback_TTB } from '../api/Callback_TTB.js';
+//import { Callback_TTB } from '../api/Callback_TTB.js';
 import { Authen_CreateTxn_CreateQR_Callback_TTB } from '../api/Authen_CreateTxn_CreateQR_Callback_TTB.js';
 import { InquiryTxn } from '../api/InquiryTxn.js';
 import { InquiryDate } from '../api/InquiryDate.js';
@@ -17,7 +17,8 @@ import { InquiryTxn_Authen_CreateTxn_Callback } from '../api/InquiryTxn_Authen_C
 import { InquiryDate_Authen_CreateTxn_Callback } from '../api/InquiryDate_Authen_CreateTxn_Callback.js';
 import { Authen_CreateTxn_CreateQR_CIMB } from '../api/Authen_CreateTxn_CreateQR_CIMB.js';
 import { Authen_CreateTxn_CreateQR_Callback_CIMB } from '../api/Authen_CreateTxn_CreateQR_Callback_CIMB.js';
-import { Verify } from '../api/verify.js';
+import { Callback_Verify_CIMB } from '../api/Callback_Verify_CIMB.js';
+//import { Verify } from '../api/verify.js';
 
 
 
@@ -33,13 +34,14 @@ export default function () {    //เรียกใช้ API ใน export def
 
   //================= TTB =======================
   //response = Authen_CreateTxn_CreateQR_TTB(cid)
-  response = Callback_TTB(scenario)
+  //response = Callback_TTB(scenario)
   //response = Authen_CreateTxn_CreateQR_Callback_TTB(cid)
 
   //================= CIMB ======================
   //response = Authen_CreateTxn_CreateQR_CIMB(cid)
   //response = Authen_CreateTxn_CreateQR_Callback_CIMB(cid)
   //response = Verify()
+  response = Callback_Verify_CIMB(scenario)
 
   //================= Inquiry ===================
   //response = InquiryTxn()
