@@ -92,11 +92,12 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     });
 
     const params_qr = {
+        timeout: "180s", // หรือ "300000ms"
         headers: {
             'Content-Type': 'application/json',
         },
     };
-    const response_qr = http.post(url_qr, payload_qr, params_qr,{ timeout: '180s' });
+    const response_qr = http.post(url_qr, payload_qr, params_qr);
     //console.log(response_qr.body);
     if (!response_qr || response_qr.error_code || (response_qr.status !== 200 && response_qr.status !== 201)) {
         console.log("QR Fail : " + response_qr.body);
