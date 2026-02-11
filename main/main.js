@@ -179,7 +179,7 @@ else if (scenariox == 3) {
         // timeUnit: durationx+'s',
         rate: vusx,
         timeUnit: '1s',
-        preAllocatedVUs: user,
+        preAllocatedVUs: 3000,
         duration: durationx + 's', // ระบุระยะเวลาที่ต้องการให้ทดสอบ
         gracefulStop: '120s',
       },

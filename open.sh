@@ -6,11 +6,11 @@
 ##########################################################################
                      API="Authen_CreateTxn_CreateQR_Callback_Bay" 
                      google_sheet="https://docs.google.com/spreadsheets/d/1-07VbbFJzytpKBMdPUOAza85AFAq3Ih5WExHhvFE2pw/edit?gid=138286257#gid=138286257" 
-                     id="18"                 #เปลี่ยน id ทุกครั้งที่ยิง
+                     id="20"                 #เปลี่ยน id ทุกครั้งที่ยิง
                      user="5000";            #จำนวนผู้ใช้งาน
                      duration="60";         #วินาที
                      scenario="3"           #scenario="1" ยิงเเบบกำหนด request (duration ได้แค่ 1 วินาที)
-                     cid="a1"                #scenario="2" ยิงเเบบกำหนด VUs  (กำหนดว่า user x คน ใช้ระบบ x วินาที)
+                     cid="a2"                #scenario="2" ยิงเเบบกำหนด VUs  (กำหนดว่า user x คน ใช้ระบบ x วินาที)
                                             #scenario="3" ยิงเเบบกำหนด request แต่ไม่แม่นยำ (duration กี่วินาทีก็ได้)
                      status="normal"        #พิมพ์คำว่า "normal" เพื่อยิงโหลดเเละ upload report ไปที่ sheet
                                             #พิมพ์คำว่า "report" upload report ล่าสุดไปที่ sheet
