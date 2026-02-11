@@ -11,7 +11,7 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     });
 
     const params = {
-        timeout: "180s", // หรือ "300000ms"
+        //timeout: "180s", // หรือ "300000ms"
         headers: {
             'Content-Type': 'application/json',
         },
@@ -55,7 +55,7 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     });
 
     const params2 = {
-        timeout: "180s", // หรือ "300000ms"
+        //timeout: "180s", // หรือ "300000ms"
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token_authen,
@@ -94,7 +94,7 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     });
 
     const params_qr = {
-        timeout: "180s", // หรือ "300000ms"
+        //timeout: "180s", // หรือ "300000ms"
         headers: {
             'Content-Type': 'application/json',
         },
