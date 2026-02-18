@@ -4,7 +4,7 @@
 ##########################################################################
 ##########################################################################
 ##########################################################################
-                     API="Authen_CreateTxn_CreateQR_Callback_Bay" 
+                     API="Authen_CreateTxn_CreateQR_Bay" 
                      google_sheet="https://docs.google.com/spreadsheets/d/1-07VbbFJzytpKBMdPUOAza85AFAq3Ih5WExHhvFE2pw/edit?gid=138286257#gid=138286257" 
                      id="6"                 #เปลี่ยน id ทุกครั้งที่ยิง
                      user="5000";            #จำนวนผู้ใช้งาน
