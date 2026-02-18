@@ -6,7 +6,7 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     const orderId = `${__VU}${__ITER}` + cid;
     const payload = JSON.stringify({
         key: "ELbbfVIn5h6vhsnbIDKxzeE6GoAvigs1EEQHi0dNCHk5ALuNaRnJM8Q38vH5FDbsF8xct3d4MfK+nqraNiXXO/wwo+KiwLO3/EPzG3E4vyM9m47+cOOm9QpvZ4bNirrUpD+4zTds7w1L7/65dVd+MTM+Kb0PO+FwbW3HyQdLKp0=",
-        orderId: "LOADTEST-KSP" + orderId
+        orderId: "LOADTEST-BAY-20250625" + orderId
         //orderId: "LOADTEST-KSP"
     });
 
@@ -47,8 +47,8 @@ export function Authen_CreateTxn_CreateQR_Bay(cid) {
     const payload2 = JSON.stringify({
         key: "ELbbfVIn5h6vhsnbIDKxzeE6GoAvigs1EEQHi0dNCHk5ALuNaRnJM8Q38vH5FDbsF8xct3d4MfK+nqraNiXXO/wwo+KiwLO3/EPzG3E4vyM9m47+cOOm9QpvZ4bNirrUpD+4zTds7w1L7/65dVd+MTM+Kb0PO+FwbW3HyQdLKp0=",
         //orderId: "LOADTEST-KSP",
-        orderId: "LOADTEST-KSP" + orderId,
-        orderDesc: "LOADTEST-KSP",
+        orderId: "LOADTEST-BAY-20250625" + orderId,
+        orderDesc: "LOADTEST-BAY-20250625",
         amount: 1,
         payType: "QR",
         regRef: ""
